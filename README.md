@@ -25,10 +25,6 @@ For each of the 4 VMs:
 - Command used to install/join ZeroTier (e.g. `curl -s https://install.zerotier.com | sudo bash`, `zerotier-cli join 60ee7c034a4afe09`)
 - Confirmation that the VM appears as authorized in ZeroTier Central
 
-**VM Juan Luarca (Router)**
-
-![VM Juan Luarca joined](images/image-J-1.jpg)
-
 **VM Carlos Vela**
 
 ![VM V joined](images/image-V-1.jpg)
@@ -86,7 +82,7 @@ For each of the 4 VMs:
 ## 6. Router Configuration
 
 - **IP forwarding:**
-  - Command(s) used to enable IP forwarding (e.g. `sysctl -w net.ipv4.ip_forward=1`, persisted in `/etc/sysctl.conf`)
+  - Command(s) used to enable IP forwarding (e.g. `sysctl -w net.ipv4.ip_forward=1`, persisted in `/etc/sysctl.d/99-zt-router.conf`)
   - Verification output
 
   ![IP forwarding enabled on router VM](images/06-ip-forwarding.jpg)
