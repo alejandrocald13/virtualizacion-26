@@ -102,14 +102,10 @@ Note: To access the web service, browse to `virtualization.com` (instead of the 
 
 ![HTTPS request and response](./docs/https-test.png)
 
-## Repository / Deliverables Checklist
-
-- [x] Branch `hw-04`, created from `main`.
-- [x] IPSec configured in **tunnel mode** between Router-1 and Router-2.
-- [x] Web server enabled on Server0 (192.168.1.10).
-- [x] HTTPS request performed from PC0 (192.168.3.10) to the server.
-- [ ] Screenshot of the request/response added to this README.
-
 ## Packet Tracer File
 
 [hw-04.pkt](./hw-04.pkt)
+
+## Repository
+- **GitHub Repository:** *https://github.com/alejandrocald13/virtualizacion-26*
+- **Branch:** `hw-04`
