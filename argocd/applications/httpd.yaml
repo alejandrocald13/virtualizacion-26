@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: httpd
+  namespace: argocd-racm
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/alejandrocald13/virtualizacion-26.git
+    targetRevision: assessment-06
+    path: apps
+    directory:
+      include: httpd.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: parcial-racm
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
