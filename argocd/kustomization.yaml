@@ -5,6 +5,7 @@ resources:
   - 00-namespace.yaml
   - install.yaml
   - ingress.yaml
+  - repository.yaml
 patches:
   - target:
       kind: ClusterRoleBinding

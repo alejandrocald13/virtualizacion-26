@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: virtualizacion-26-repo
+  namespace: argocd-racm
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  url: https://github.com/alejandrocald13/virtualizacion-26.git
