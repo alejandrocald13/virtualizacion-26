@@ -4,6 +4,7 @@ namespace: argocd-racm
 resources:
   - 00-namespace.yaml
   - install.yaml
+  - ingress.yaml
 patches:
   - target:
       kind: ClusterRoleBinding
@@ -11,3 +12,13 @@ patches:
       - op: replace
         path: /subjects/0/namespace
         value: argocd-racm
+  - target:
+      kind: ConfigMap
+      name: argocd-cmd-params-cm
+    patch: |-
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: argocd-cmd-params-cm
+      data:
+        server.insecure: "true"
