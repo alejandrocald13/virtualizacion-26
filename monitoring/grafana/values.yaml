@@ -1,0 +1,41 @@
+adminUser: admin
+
+testFramework:
+  enabled: false
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  hosts:
+    - grafana.racm.assessment6
+  path: /
+  pathType: Prefix
+
+grafana.ini:
+  server:
+    root_url: http://grafana.racm.assessment6
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    memory: 512Mi
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        uid: prometheus
+        access: proxy
+        url: http://prometheus-server.monitoring-racm.svc.cluster.local
+        isDefault: true
+        editable: false
+      - name: Loki
+        type: loki
+        uid: loki
+        access: proxy
+        url: http://loki.monitoring-racm.svc.cluster.local:3100
+        editable: false
