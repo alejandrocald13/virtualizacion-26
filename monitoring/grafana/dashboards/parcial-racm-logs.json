@@ -1,0 +1,72 @@
+{
+  "uid": "parcial-racm-logs",
+  "title": "parcial-racm Logs",
+  "tags": ["racm", "loki"],
+  "timezone": "browser",
+  "schemaVersion": 41,
+  "version": 1,
+  "refresh": "30s",
+  "time": {"from": "now-30m", "to": "now"},
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Log lines per app (parcial-racm)",
+      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 8},
+      "datasource": {"type": "loki", "uid": "loki"},
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (app) (count_over_time({namespace=\"parcial-racm\"}[1m]))",
+          "queryType": "range",
+          "legendFormat": "{{app}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "logs",
+      "title": "nginx logs",
+      "gridPos": {"x": 0, "y": 8, "w": 12, "h": 10},
+      "datasource": {"type": "loki", "uid": "loki"},
+      "targets": [{"refId": "A", "expr": "{namespace=\"parcial-racm\", app=\"nginx\"}", "queryType": "range"}],
+      "options": {"showTime": true, "wrapLogMessage": true, "sortOrder": "Descending", "enableLogDetails": true}
+    },
+    {
+      "id": 3,
+      "type": "logs",
+      "title": "httpd logs",
+      "gridPos": {"x": 12, "y": 8, "w": 12, "h": 10},
+      "datasource": {"type": "loki", "uid": "loki"},
+      "targets": [{"refId": "A", "expr": "{namespace=\"parcial-racm\", app=\"httpd\"}", "queryType": "range"}],
+      "options": {"showTime": true, "wrapLogMessage": true, "sortOrder": "Descending", "enableLogDetails": true}
+    },
+    {
+      "id": 4,
+      "type": "logs",
+      "title": "whoami logs",
+      "gridPos": {"x": 0, "y": 18, "w": 12, "h": 10},
+      "datasource": {"type": "loki", "uid": "loki"},
+      "targets": [{"refId": "A", "expr": "{namespace=\"parcial-racm\", app=\"whoami\"}", "queryType": "range"}],
+      "options": {"showTime": true, "wrapLogMessage": true, "sortOrder": "Descending", "enableLogDetails": true}
+    },
+    {
+      "id": 5,
+      "type": "logs",
+      "title": "podinfo logs",
+      "gridPos": {"x": 12, "y": 18, "w": 12, "h": 10},
+      "datasource": {"type": "loki", "uid": "loki"},
+      "targets": [{"refId": "A", "expr": "{namespace=\"parcial-racm\", app=\"podinfo\"}", "queryType": "range"}],
+      "options": {"showTime": true, "wrapLogMessage": true, "sortOrder": "Descending", "enableLogDetails": true}
+    },
+    {
+      "id": 6,
+      "type": "logs",
+      "title": "traefik logs",
+      "gridPos": {"x": 0, "y": 28, "w": 24, "h": 10},
+      "datasource": {"type": "loki", "uid": "loki"},
+      "targets": [{"refId": "A", "expr": "{namespace=\"traefik\"}", "queryType": "range"}],
+      "options": {"showTime": true, "wrapLogMessage": true, "sortOrder": "Descending", "enableLogDetails": true}
+    }
+  ]
+}

@@ -39,3 +39,19 @@ datasources:
         access: proxy
         url: http://loki.monitoring-racm.svc.cluster.local:3100
         editable: false
+
+dashboardProviders:
+  dashboardproviders.yaml:
+    apiVersion: 1
+    providers:
+      - name: racm
+        orgId: 1
+        folder: personal-project-01
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/racm
+
+dashboardsConfigMaps:
+  racm: grafana-dashboards
