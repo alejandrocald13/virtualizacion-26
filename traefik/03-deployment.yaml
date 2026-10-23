@@ -25,6 +25,7 @@ spec:
             - --providers.kubernetesingress.ingressclass=traefik
             - --providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik
             - --log.level=INFO
+            - --accesslog=true
           ports:
             - name: web
               containerPort: 80
